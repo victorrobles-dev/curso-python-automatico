@@ -20,12 +20,37 @@ def adicionar_aluno():
 
     alunos.append(dados)
 
-def listar_alunos(alunos):
+def listar_alunos():
+    if len(alunos) == 0:
+        print(f'Sem alunos cadastrados')
+        return
     for aluno in alunos:
-        print(f'Nome: {alunos['nome']} \n Idade: {alunos['idade']} \n Nota: {alunos['nota']} \n {'='*30}')
+        print(f'Nome: {aluno['nome']} \n Idade: {aluno['idade']} \n Nota: {aluno['nota']} \n {'='*30}')
+    
+def procurar_aluno(nome_aluno):
+    if len(alunos) == 0:
+        print(f'Sem alunos cadastrados')
+        return
+    for aluno in alunos:
+        if aluno['nome'].lower() == nome_aluno.lower():
+            print(f'Nome: {aluno['nome']} \n Idade: {aluno['idade']} \n Nota: {aluno['nota']}')
+            break
+    else:
+        print(f'Esse aluno não foi encontrado!')
+
+def remover_aluno(nome_aluno):        
+    if len(alunos) == 0:
+        print(f'Sem alunos cadastrados')
+        return
+    for aluno in alunos:
+        if aluno['nome'].lower() == nome_aluno.lower():
+            alunos.remove(aluno)
+            break
+    else:
+        print(f'Esse aluno não foi encontrado!')
 
 while True:
-    opcao = int(input('Digite a opção que deseja executar: \n 1. Cadastrar aluno \n 2. Listar todos os alunos \n 3. Buscar aluno pelo nome \n 4. Consultar aluno \n 5. Mostrar média geral entre alunos \n 6. Sair \n'))
+    opcao = int(input('\n Digite a opção que deseja executar: \n 1. Cadastrar aluno \n 2. Listar todos os alunos \n 3. Buscar aluno pelo nome \n 4. Remover aluno \n 5. Mostrar média geral entre alunos \n 6. Sair \n'))
     
     match opcao:
         case 1:
@@ -33,9 +58,11 @@ while True:
         case 2:
             listar_alunos()
         case 3:
-            ...
+            nome_aluno = input('Qual aluno deseja buscar? ')
+            procurar_aluno(nome_aluno)
         case 4:
-            ...
+            nome_aluno = input('Qual aluno deseja remover? ')
+            remover_aluno(nome_aluno)
         case 5:
             ...
         case 6:
