@@ -1,9 +1,8 @@
 from exercicios.matematica import dobro, metade
 from exercicios.mensagens import bem_vindo
-# from modulos.funcoes import saudacao, somar, subtrair
-# saudacao('Victor')
-# somar(2, 5)
-# subtrair(10, 4)
+from exercicios.meu_pacote.formatador import caixa_alta 
+from exercicios.meu_pacote.numeros import eh_par
+
 numero = int(input('Digite um número e vou exibir o dobro: '))
 dobro(numero)
 
@@ -12,3 +11,7 @@ metade(numero)
 
 nome = input('Digite o seu nome: ')
 bem_vindo(nome)
+
+caixa_alta('texto em maiúsculo')
+
+eh_par(10)
